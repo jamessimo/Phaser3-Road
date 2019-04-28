@@ -59,20 +59,20 @@ class gameScene extends Phaser.Scene {
     this.playerY = 0;
     this.playerZ = null; // player relative z distance from camera (computed)
     this.centrifugal = 1.2;
-    //this.background = this.add.sprite(this.renderSettings.width / 2, this.renderSettings.height / 2, 'bg');
-    //this.mainCamera = this.cameras.main;
+    this.background = this.add.sprite(this.renderSettings.width / 2, (this.renderSettings.height / 2) - 60, 'bg');
+    //this.camera = this.cameras3d.add(90).setPosition(0, -40, 100).setPixelScale(64);
+
+    this.utils = new Utils(this);
+    this.render = new Renderer(this);
 
     this.graphics = this.add.graphics({
       x: 0,
       y: 0
     });
-
-    //this.camera = this.cameras3d.add(90).setPosition(0, -40, 100).setPixelScale(64);
+    this.cameras.main.setBackgroundColor(this.render.COLORS.SKY);
 
     this.cursors = this.input.keyboard.createCursorKeys();
 
-    this.utils = new Utils(this);
-    this.render = new Renderer(this);
 
     this.build();
 
